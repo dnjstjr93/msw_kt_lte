@@ -122,8 +122,9 @@ def send_data_to_msw (data_topic, obj_data):
 
 def missionPortData(missionPort):
     global lteQ
-    lteQ = json.loads(lteQ)
+
     while True:
+        lteQ = json.loads(lteQ)
         lteReqGetRssi(missionPort)
         missionStr = missionPort.readlines()
 
@@ -164,7 +165,6 @@ def missionPortData(missionPort):
 
         send_data_to_msw(data_topic, lteQ)
 
-        lteQ = dict()
 
 
 if __name__ == '__main__':
